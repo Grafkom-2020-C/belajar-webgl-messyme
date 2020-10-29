@@ -6,12 +6,31 @@ function main() {
         //to get an access to a webgl context for 2D &/ 3D graphics rendering
     var gl = canvas.getContext("webgl"); 
         //gl=alat tulis, canvas=kertas
+    
+    function resize(canvas) {
+      // Lookup the size the browser is displaying the canvas.
+      var displayWidth  = canvas.clientWidth;
+      var displayHeight = canvas.clientHeight;
+     
+      // Check if the canvas is not the same size.
+      if (canvas.width  != displayWidth ||
+          canvas.height != displayHeight) {
+     
+        // Make the canvas the same size
+        canvas.width  = displayWidth;
+        canvas.height = displayHeight;
+        canvas.width = canvas.height; // mengubah menjadi persegi (rasio 1:1)
+      }
+    }
+    resize(gl.canvas);
 
     var vertices = [
-      0, 0.25,        // titik A
-      -0.25, -0.25,   // titik B
-      0.25, -0.25,    // titik C
-      0, 0.25,        // titik A
+      0.25, 0.25,     // titik A
+      0.25, -0.25,    // titik B
+      -0.25, -0.25,   // titik C
+      0.25, 0.25,     // titik A
+      -0.25, -0.25,   // titik C
+      -0.25, 0.25,    // titik D
     ];
       
     var vertexBuffer = gl.createBuffer(); //VBO(VertexBufferObject)==position buffer, adl pointer ke buffer yg ada di GPU
@@ -96,10 +115,11 @@ function main() {
     //pake warna gl.clearColor(red, green, blue, alpha);
     gl.clearColor(0.73, 0.47, 0.82, 0.8); //canvas
     gl.clear(gl.COLOR_BUFFER_BIT);
+    gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
   
 
-    var primitive = gl.LINE_STRIP;
+    var primitive = gl.TRIANGLES;
     var offset = 0;
-    var nVertex = 4; //juml vertex yg akan digambar
+    var nVertex = 6; //juml vertex yg akan digambar
     gl.drawArrays(primitive, offset, nVertex);
 }
