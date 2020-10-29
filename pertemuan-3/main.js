@@ -10,7 +10,10 @@ function main() {
     var vertices = [
       0, 0.25,        // titik A
       -0.25, -0.25,   // titik B
+      -0.25, -0.25,   // titik B
       0.25, -0.25,    // titik C
+      0.25, -0.25,    // titik C
+      0, 0.25,        // titik A
     ];
       
     var vertexBuffer = gl.createBuffer(); //VBO(VertexBufferObject)==position buffer, adl pointer ke buffer yg ada di GPU
@@ -38,7 +41,7 @@ function main() {
     var vertexShaderSource = `
       attribute vec2 a_Position;
       void main() {
-        gl_PointSize = 50.0;
+        gl_PointSize = 100.0;
         gl_Position = vec4(a_Position, 0.0, 1.0);
       } 
     `; //vec4(0.0, 0.0, 0.0, 1.0); == posisi tengah. (x, y, z, w) ttp ditulis z==0 meski 2D
@@ -46,7 +49,7 @@ function main() {
     //warna titik
     var fragmentShaderSource = `
       void main() {
-        gl_FragColor = vec4(0.47, 0.82, 0.59, 1.0); 
+        gl_FragColor = vec4(0.47, 0.82, 0.59, 2.0); 
       }
     `; 
 
@@ -93,12 +96,12 @@ function main() {
     */
 
     //pake warna gl.clearColor(red, green, blue, alpha);
-    gl.clearColor(0.73, 0.47, 0.82, 1.0); //canvas
+    gl.clearColor(0.73, 0.47, 0.82, 0.8); //canvas
     gl.clear(gl.COLOR_BUFFER_BIT);
   
 
-    var primitive = gl.POINTS;
+    var primitive = gl.LINES;
     var offset = 0;
-    var nVertex = 3; //juml vertex yg akan digambar
+    var nVertex = 6; //juml vertex yg akan digambar
     gl.drawArrays(primitive, offset, nVertex);
 }
