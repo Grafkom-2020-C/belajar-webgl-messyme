@@ -28,8 +28,6 @@ function main() {
       0.25, 0.25,     // titik A
       0.25, -0.25,    // titik B
       -0.25, -0.25,   // titik C
-      0.25, 0.25,     // titik A
-      -0.25, -0.25,   // titik C
       -0.25, 0.25,    // titik D
     ];
       
@@ -118,8 +116,8 @@ function main() {
     gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
   
 
-    var primitive = gl.TRIANGLES;
+    var primitive = gl.TRIANGLE_FAN;
     var offset = 0;
-    var nVertex = 6; //juml vertex yg akan digambar
+    var nVertex = 4; //juml vertex yg akan digambar
     gl.drawArrays(primitive, offset, nVertex);
 }
