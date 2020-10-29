@@ -29,6 +29,7 @@ function main() {
       0.25, -0.25,    // titik B
       -0.25, -0.25,   // titik C
       -0.25, 0.25,    // titik D
+      0.25, 0.25,     // titik A
     ];
       
     var vertexBuffer = gl.createBuffer(); //VBO(VertexBufferObject)==position buffer, adl pointer ke buffer yg ada di GPU
@@ -116,8 +117,8 @@ function main() {
     gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
   
 
-    var primitive = gl.TRIANGLE_FAN;
+    var primitive = gl.TRIANGLE_STRIP;
     var offset = 0;
-    var nVertex = 4; //juml vertex yg akan digambar
+    var nVertex = 5; //juml vertex yg akan digambar
     gl.drawArrays(primitive, offset, nVertex);
 }
