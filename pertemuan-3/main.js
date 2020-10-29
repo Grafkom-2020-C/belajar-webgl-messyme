@@ -10,10 +10,7 @@ function main() {
     var vertices = [
       0, 0.25,        // titik A
       -0.25, -0.25,   // titik B
-      -0.25, -0.25,   // titik B
       0.25, -0.25,    // titik C
-      0.25, -0.25,    // titik C
-      0, 0.25,        // titik A
     ];
       
     var vertexBuffer = gl.createBuffer(); //VBO(VertexBufferObject)==position buffer, adl pointer ke buffer yg ada di GPU
@@ -100,8 +97,8 @@ function main() {
     gl.clear(gl.COLOR_BUFFER_BIT);
   
 
-    var primitive = gl.LINES;
+    var primitive = gl.LINE_LOOP;
     var offset = 0;
-    var nVertex = 6; //juml vertex yg akan digambar
+    var nVertex = 3; //juml vertex yg akan digambar
     gl.drawArrays(primitive, offset, nVertex);
 }
